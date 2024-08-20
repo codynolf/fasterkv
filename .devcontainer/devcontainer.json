@@ -1,0 +1,29 @@
+{
+	"name": "fasterkv",
+	"image": "mcr.microsoft.com/devcontainers/dotnet:8.0",
+	"customizations":
+    {
+        "vscode": {
+            "extensions": [
+                "ms-dotnettools.csdevkit",
+				"patcx.vscode-nuget-gallery",
+                "GitHub.copilot",
+                "vscode-icons-team.vscode-icons"
+            ],
+            "settings": {
+                "workbench.colorTheme": "Visual Studio 2019 Dark",
+                "workbench.iconTheme": "vscode-icons",
+                "workbench.preferredDarkColorTheme": "Default Dark Modern"
+            }
+        }
+    },
+    "mounts": [
+		"type=bind,source=/home/${localEnv:USER}/.ssh,target=/root/.ssh,readonly"
+	],
+    "containerEnv": { 
+		"GIT_EMAIL": "codynolf@outlook.com",
+		"GIT_USER": "Cody Nolf"
+	},
+	"remoteUser": "root",
+    "postCreateCommand": "git config --global user.email \"$GIT_EMAIL\" && git config --global user.name \"$GIT_USER\" && dotnet restore"
+}
